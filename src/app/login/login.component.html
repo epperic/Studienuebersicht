@@ -1,0 +1,19 @@
+<div class="container">
+  <form (keydown.enter)="onLogin()">
+    <div class="form-group">
+      <label for="email">Email Adresse:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter Email" aria-describedby="emailHelp" #email>
+      <small id="emailHelp" class="form-text text-muted">Ja, ich klaue dein Passwort.</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Passwort</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter Passwort" #password>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="onLogin()">Anmelden</button>
+  </form>
+
+  <br>
+  <div class="alert alert-danger" role="alert" *ngIf="login_failed">
+    Es gibt keinen User mit diesem Passwort!
+  </div>
+</div>

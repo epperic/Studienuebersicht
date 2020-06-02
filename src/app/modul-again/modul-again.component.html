@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!hasSubmitted">
+    <div class="form-group">
+        <label for="semester">In welchem Semester studierst du grade?</label>
+        <input type="number" class="form-control" id="semester" formControlName="semester" [ngClass]="{
+        'is-invalid': form.controls.semester.invalid && form.controls.semester.dirty,
+        'is-valid': form.controls.semester.valid && form.controls.semester.dirty}">
+        <small id="formhelp" class="form-text text-muted">Gib eine Ziffer zwischen 1 und 8 ein.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Ok</button>
+</form>
+
+<button class="btn btn-success" [disabled]="!selected" [ngClass]="!selected ? 'disabled' :''" (click)="onEdit()" *ngIf="hasSubmitted">Note eintragen</button>
+<br><br>
+
+<table class="table table-bordered" *ngIf="hasSubmitted">
+
+    <colgroup>
+        <col span="1" style="width: 10%;">
+        <col span="1" style="width: 60%;">
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 10%;">
+    </colgroup>
+
+    <thead>
+        <td scope="col">Semester</td>
+        <td scope="col">Modul</td>
+        <td scope="col">Professor</td>
+        <td scope="col">ECTS</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"
+            [ngClass]="modul == selected ? 'table-info' : ''">
+            <td scope="row">{{modul.semester}}</td>
+            <td scope="row">{{modul.name}}</td>
+            <td scope="row">{{modul.professor}}</td>
+            <td scope="row">{{modul.ects}}</td>
+        </tr>
+    </tbody>
+</table>
