@@ -11,6 +11,7 @@ import { ModulService } from '../shared/ModulService';
 export class ModullistComponent implements OnInit {
   selected = null;
   objects: Modul[] = [];
+  allECTS: number;
 
   constructor(private router: Router,
     private service: ModulService,
@@ -26,7 +27,18 @@ export class ModullistComponent implements OnInit {
     let semester:string = this.route.snapshot.url[1].toString();
     this.service.getSemester(semester).then(objects => {
       this.objects = objects;
+      this.calcAllECTS();
     });
+  }
+
+  calcAllECTS() {
+    let CollectedECTS = 0;
+    this.objects.forEach(function (modul) {
+      if(modul.note != "0,0"){
+        CollectedECTS += (modul.ects * 1);
+      }
+    });
+    this.allECTS = CollectedECTS;
   }
 
   ngOnInit(): void {
