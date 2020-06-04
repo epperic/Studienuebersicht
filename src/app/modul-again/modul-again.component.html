@@ -12,7 +12,7 @@
 <button class="btn btn-success" [disabled]="!selected" [ngClass]="!selected ? 'disabled' :''" (click)="onEdit()" *ngIf="hasSubmitted">Note eintragen</button>
 <br><br>
 
-<table class="table table-bordered" *ngIf="hasSubmitted">
+<table class="table table-bordered table-hover" *ngIf="hasSubmitted">
 
     <colgroup>
         <col span="1" style="width: 10%;">

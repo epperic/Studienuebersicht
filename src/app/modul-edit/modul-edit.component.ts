@@ -31,7 +31,7 @@ export class ModulEditComponent implements OnInit {
     if (id == 0)
       this.obj = new Modul("", "", "", 0, "", 0);
     else
-      this.service.byID(name).then(obj => {
+      this.service.byID(id).then(obj => {
         this.obj = obj;
         this.form.setValue({
           "name": this.obj.name,
@@ -39,8 +39,8 @@ export class ModulEditComponent implements OnInit {
           "ects": this.obj.ects,
           "note": this.obj.note,
           "semester": this.obj.semester
-        })
-      })
+        });
+      });
   }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { Modul } from '../model/Modul';
-import { Output, EventEmitter, Injectable,} from '@angular/core';
+import { Output, EventEmitter, Injectable, } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 
@@ -10,16 +10,55 @@ export class ModulService {
 
   constructor(private db: AngularFirestore) { }
 
- async getAll() {
+  async getSemester(semester: string) {
     return new Promise<Modul[]>(resolve => {
       let collection = this.db.collection('modul');
       collection.get().subscribe(function (snapshot) {
         let objects: Modul[] = [];
         snapshot.forEach(function (doc) {
           let data = doc.data();
-          let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
-          objects.push();
+          if (data.semester == semester) {
+            let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
+            objects.push(obj);
+          }
         });
+        resolve(objects);
+      });
+    });
+  }
+
+  async getGrades() {
+    return new Promise<Modul[]>(resolve => {
+      let gesamt_ECTS: number = 0;
+      let collection = this.db.collection('modul');
+      collection.get().subscribe(function (snapshot) {
+        let objects: Modul[] = [];
+        snapshot.forEach(function (doc) {
+          let data = doc.data();
+          if (data.note != "0,0") {
+            let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
+            objects.push(obj);
+          }
+        });
+        objects.sort((a, b) => a.semester - b.semester);
+        resolve(objects);
+      });
+    });
+  }
+
+  async getToDoModules(activeSemester: number) {
+    return new Promise<Modul[]>(resolve => {
+      let collection = this.db.collection('modul');
+      collection.get().subscribe(function (snapshot) {
+        let objects: Modul[] = [];
+        snapshot.forEach(function (doc) {
+          let data = doc.data();
+          if (data.note == "0,0" && data.semester < activeSemester) {
+            let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
+            objects.push(obj);
+          }
+        });
+        objects.sort((a, b) => a.semester - b.semester);
         resolve(objects);
       });
     });

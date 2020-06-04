@@ -23,7 +23,13 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const appRoutes:Routes =[
   { path: 'home', component: HomeComponent, canActivate: [RouteGuard]},
-  { path: 'semester/:id', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/1', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/2', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/3', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/4', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/5', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/6', component: ModullistComponent, canActivate: [RouteGuard]},
+  { path: 'semester/7', component: ModullistComponent, canActivate: [RouteGuard]},
   { path: 'modul/:id', component: ModulEditComponent, canActivate: [RouteGuard]},
   { path: 'grades', component: GradesComponent, canActivate: [RouteGuard]},
   { path: 'do_modul_again', component: ModulAgainComponent, canActivate: [RouteGuard]},

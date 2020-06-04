@@ -26,14 +26,8 @@ export class ModulAgainComponent implements OnInit {
   }
 
   loadData(activeSemester: number) {
-    this.service.getAll().then(objects => {
+    this.service.getToDoModules(activeSemester).then(objects => {
       this.objects = objects;
-      let subset = null;
-      this.objects.forEach(function (Modul) {
-        if (Modul.note == "0,0" && Modul.semester < activeSemester) {
-          subset.push();
-        }
-      });
     });
   }
 

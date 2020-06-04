@@ -9,8 +9,8 @@
     <thead>
         <td scope="col">Semester</td>
         <td scope="col">Modul</td>
-        <td scope="col">ECTS</td>
-        <td scope="col">Note</td>
+        <td scope="col">ECTS: {{allECTS}}</td>
+        <td scope="col">Note: Ø1,8</td>
     </thead>
     <tbody>
         <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"

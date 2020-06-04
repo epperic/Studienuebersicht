@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Modul } from '../model/Modul';
 import { ModulService } from '../shared/ModulService';
 
@@ -12,7 +12,9 @@ export class ModullistComponent implements OnInit {
   selected = null;
   objects: Modul[] = [];
 
-  constructor(private router: Router, private service: ModulService) {
+  constructor(private router: Router,
+    private service: ModulService,
+    private route: ActivatedRoute) {
     this.loadData();
     this.service.changed.subscribe(() => {
       this.loadData();
@@ -20,8 +22,9 @@ export class ModullistComponent implements OnInit {
     });
   }
 
-  loadData(){
-    this.service.getAll().then(objects => {
+  loadData() {
+    let semester:string = this.route.snapshot.url[1].toString();
+    this.service.getSemester(semester).then(objects => {
       this.objects = objects;
     });
   }
