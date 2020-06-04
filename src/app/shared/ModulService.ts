@@ -6,7 +6,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable()
 export class ModulService {
   @Output() changed = new EventEmitter();
-  objects: Modul[] = [];
 
   constructor(private db: AngularFirestore) { }
 
@@ -22,6 +21,7 @@ export class ModulService {
             objects.push(obj);
           }
         });
+        objects.sort((a,b) => a.name > b.name ? 1 : -1);
         resolve(objects);
       });
     });
