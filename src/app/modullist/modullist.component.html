@@ -1,43 +1,39 @@
-<button class="btn btn-success" 
-    [disabled]="!selected" 
-    [ngClass]="!selected ? 'disabled' :''"
-    (click)="onEdit()"
->Modul bearbeiten</button>
+<div class="ct">
+    <button class="btn btn-success" [disabled]="!selected" [ngClass]="!selected ? 'disabled' :''"
+        (click)="onEdit()">Modul bearbeiten</button>
 
-&nbsp;
+    &nbsp;
 
-<button class="btn btn-danger" 
-    [disabled]="!selected"
-    [ngClass]="!selected ? 'disabled' :''"
-    (click)="onDelete()"
->Modul löschen</button>
+    <button class="btn btn-danger" [disabled]="!selected" [ngClass]="!selected ? 'disabled' :''"
+        (click)="onDelete()">Modul löschen</button>
 
-&nbsp;
+    &nbsp;
 
-<button class="btn btn-success" (click)="onNew()">Modul hinzufügen</button>
+    <button class="btn btn-success" (click)="onNew()">Modul hinzufügen</button>
 
-<br><br>
+    <br><br>
 
-<table class="table table-bordered table-hover">
-    <colgroup>
-        <col span="1" style="width: 60%;">
-        <col span="1" style="width: 20%;">
-        <col span="1" style="width: 10%;">
-        <col span="1" style="width: 10%;">
-     </colgroup>
-    <thead>
-        <td scope="col">Modulname</td>
-        <td scope="col">Professor</td>
-        <td scope="col">ECTS: {{allECTS}}</td>
-        <td scope="col">Note</td>
-    </thead>
-    <tbody>
-        <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"
-            [ngClass]="modul == selected ? 'table-info' : ''">
-            <td scope="row">{{modul.name}}</td>
-            <td scope="row">{{modul.professor}}</td>
-            <td scope="row">{{modul.ects}}</td>
-            <td scope="row">{{modul.note}}</td>
-        </tr>
-    </tbody>
-</table>
+    <table class="table table-bordered table-hover">
+        <colgroup>
+            <col span="1" style="width: 60%;">
+            <col span="1" style="width: 20%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+        </colgroup>
+        <thead>
+            <td scope="col">Modulname</td>
+            <td scope="col">Professor</td>
+            <td scope="col">ECTS: {{allECTS}}</td>
+            <td scope="col">Note</td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"
+                [ngClass]="modul == selected ? 'table-info' : ''">
+                <td scope="row">{{modul.name}}</td>
+                <td scope="row">{{modul.professor}}</td>
+                <td scope="row">{{modul.ects}}</td>
+                <td scope="row">{{modul.note}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

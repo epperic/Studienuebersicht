@@ -1,24 +1,26 @@
-<table class="table table-hover" style="width: 100%">
-    <colgroup>
-        <col span="1" style="width: 10%;">
-        <col span="1" style="width: 70%;">
-        <col span="1" style="width: 10%;">
-        <col span="1" style="width: 10%;">
-     </colgroup>
+<div class="ct">
+    <table class="table table-hover" style="width: 100%">
+        <colgroup>
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 70%;">
+            <col span="1" style="width: 10%;">
+            <col span="1" style="width: 10%;">
+        </colgroup>
 
-    <thead>
-        <td scope="col">Semester</td>
-        <td scope="col">Modul</td>
-        <td scope="col">ECTS: {{allECTS}}</td>
-        <td scope="col">Note: Ø1,8</td>
-    </thead>
-    <tbody>
-        <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"
-            [ngClass]="modul == selected ? 'table-info' : ''">
-            <td scope="row">{{modul.semester}}</td>
-            <td scope="row">{{modul.name}}</td>
-            <td scope="row">{{modul.ects}}</td>
-            <td scope="row">{{modul.note}}</td>
-        </tr>
-    </tbody>
-</table>
+        <thead>
+            <td scope="col">Semester</td>
+            <td scope="col">Modul</td>
+            <td scope="col">ECTS: {{allECTS}}</td>
+            <td scope="col">Note: Ø1,8</td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"
+                [ngClass]="modul == selected ? 'table-info' : ''">
+                <td scope="row">{{modul.semester}}</td>
+                <td scope="row">{{modul.name}}</td>
+                <td scope="row">{{modul.ects}}</td>
+                <td scope="row">{{modul.note}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

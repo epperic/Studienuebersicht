@@ -21,7 +21,7 @@ export class ModulService {
             objects.push(obj);
           }
         });
-        objects.sort((a,b) => a.name > b.name ? 1 : -1);
+        objects.sort((a, b) => a.name > b.name ? 1 : -1);
         resolve(objects);
       });
     });
