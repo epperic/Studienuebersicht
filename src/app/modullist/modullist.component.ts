@@ -24,21 +24,22 @@ export class ModullistComponent implements OnInit {
   }
 
   loadData() {
-    let semester:string = this.route.snapshot.url[1].toString();
-    this.service.getSemester(semester).then(objects => {
-      this.objects = objects;
-      this.calcAllECTS();
+    let semester: string = this.route.snapshot.url[1].toString();
+    this.service.getModules().then(objects => {
+      this.objects = this.getSemester(objects, semester);
+      this.allECTS = this.service.calcAllECTS(this.objects);
     });
   }
 
-  calcAllECTS() {
-    let CollectedECTS = 0;
-    this.objects.forEach(function (modul) {
-      if(modul.note != "0,0"){
-        CollectedECTS += (modul.ects * 1);
+  getSemester(objects: Modul[], semester: string) {
+    let filteredObjects: Modul[] = [];
+    objects.forEach(function (obj) {
+      if (obj.semester.toString() == semester) {
+        filteredObjects.push(obj);
       }
     });
-    this.allECTS = CollectedECTS;
+    filteredObjects.sort((a, b) => a.name > b.name ? 1 : -1);
+    return filteredObjects;
   }
 
   ngOnInit(): void {

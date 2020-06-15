@@ -10,7 +10,7 @@ import { Modul } from '../model/Modul';
 export class GradesComponent implements OnInit {
   objects: Modul[] = [];
   selected = null;
-  allECTS = null;
+  allECTS: number;
 
   constructor(private service: ModulService) {
     this.loadData();
@@ -20,21 +20,24 @@ export class GradesComponent implements OnInit {
   }
 
   loadData() {
-    this.service.getGrades().then(objects => {
-      this.objects = objects;
-      this.calcAllECTS();
+    this.service.getModules().then(objects => {
+      this.objects = this.getGrades(objects);
+      this.allECTS = this.service.calcAllECTS(this.objects);
     });
+  }
+
+  getGrades(objects: Modul[]) {
+    let filteredObjects: Modul[] = [];
+    objects.forEach(function (obj) {
+      if (obj.note != "0,0") {
+        filteredObjects.push(obj);
+      }
+    });
+    filteredObjects.sort((a, b) => a.semester - b.semester);
+    return filteredObjects;
   }
 
   onSelect(index) {
     this.selected = this.objects[index]
-  }
-
-  calcAllECTS() {
-    let CollectedECTS = 0;
-    this.objects.forEach(function (modul) {
-      CollectedECTS += (modul.ects * 1);
-    });
-    this.allECTS = CollectedECTS;
   }
 }

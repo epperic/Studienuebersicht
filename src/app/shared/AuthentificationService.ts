@@ -6,9 +6,9 @@ export class AuthentificationService {
     @Output() changed = new EventEmitter
     private current_user = null;
 
-    constructor(private service:AngularFireAuth) { }
-    
-    async login(email:string, password:string){
+    constructor(private service: AngularFireAuth) { }
+
+    async login(email: string, password: string) {
         try {
             let result = await this.service.signInWithEmailAndPassword(email, password);
             this.current_user = result.user;
@@ -20,12 +20,12 @@ export class AuthentificationService {
         }
     }
 
-    logout(){
+    logout() {
         this.current_user = null;
         this.changed.emit();
     }
 
-    isLoggedIn(){
+    isLoggedIn() {
         return this.current_user != null;
     }
 }

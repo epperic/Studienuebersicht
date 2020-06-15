@@ -9,25 +9,7 @@ export class ModulService {
 
   constructor(private db: AngularFirestore) { }
 
-  async getSemester(semester: string) {
-    return new Promise<Modul[]>(resolve => {
-      let collection = this.db.collection('modul');
-      collection.get().subscribe(function (snapshot) {
-        let objects: Modul[] = [];
-        snapshot.forEach(function (doc) {
-          let data = doc.data();
-          if (data.semester == semester) {
-            let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
-            objects.push(obj);
-          }
-        });
-        objects.sort((a, b) => a.name > b.name ? 1 : -1);
-        resolve(objects);
-      });
-    });
-  }
-
-  async getGrades() {
+  async getModules() {
     return new Promise<Modul[]>(resolve => {
       let gesamt_ECTS: number = 0;
       let collection = this.db.collection('modul');
@@ -35,33 +17,22 @@ export class ModulService {
         let objects: Modul[] = [];
         snapshot.forEach(function (doc) {
           let data = doc.data();
-          if (data.note != "0,0") {
-            let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
-            objects.push(obj);
-          }
+          let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
+          objects.push(obj);
         });
-        objects.sort((a, b) => a.semester - b.semester);
         resolve(objects);
       });
     });
   }
 
-  async getToDoModules(activeSemester: number) {
-    return new Promise<Modul[]>(resolve => {
-      let collection = this.db.collection('modul');
-      collection.get().subscribe(function (snapshot) {
-        let objects: Modul[] = [];
-        snapshot.forEach(function (doc) {
-          let data = doc.data();
-          if (data.note == "0,0" && data.semester < activeSemester) {
-            let obj = new Modul(doc.id, data["name"], data["professor"], data["ects"], data["note"], data["semester"]);
-            objects.push(obj);
-          }
-        });
-        objects.sort((a, b) => a.semester - b.semester);
-        resolve(objects);
-      });
+  calcAllECTS(objects: Modul[]) {
+    let CollectedECTS = 0;
+    objects.forEach(function (modul) {
+      if (modul.note != "0,0") {
+        CollectedECTS += (modul.ects * 1);
+      }
     });
+    return CollectedECTS;
   }
 
   delete(id: string) {

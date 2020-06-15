@@ -1,45 +1,45 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- Brand-->
-    <a class="navbar-brand" routerLink="/home">Intelligent Systems Design</a>
+  <!-- Brand-->
+  <a class="navbar-brand" routerLink="/home">Intelligent Systems Design</a>
 
-    <!-- Toggler/collapsable Button-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" 
+  <!-- Toggler/collapsable Button-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <!-- Navbar links-->
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active" routerLinkActive="active">
-          <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" 
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Semester </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" routerLink="/semester/1">1. Semester <span class="sr-only">(current)</span></a>
-              <a class="dropdown-item" routerLink="/semester/2">2. Semester <span class="sr-only">(current)</span></a>
-              <a class="dropdown-item" routerLink="/semester/3">3. Semester <span class="sr-only">(current)</span></a>
-              <a class="dropdown-item" routerLink="/semester/4">4. Semester <span class="sr-only">(current)</span></a>
-              <a class="dropdown-item" routerLink="/semester/5">5. Semester <span class="sr-only">(current)</span></a>
-              <a class="dropdown-item" routerLink="/semester/6">6. Semester <span class="sr-only">(current)</span></a>
-              <a class="dropdown-item" routerLink="/semester/7">7. Semester <span class="sr-only">(current)</span></a>
-            </div>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/grades">Leistungen</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/do_modul_again">Nachzuholende Module</a>
-        </li>
-      </ul>
-      <ul class= "navbar-nav ml-auto" >
-        <li class= "nav-item" *ngIf="is_logged_in">
-          <a class="nav-link" routerLink="/logout">Logout</a>
-        </li>
-        <li class= "nav-item" *ngIf="!is_logged_in">
-          <a class="nav-link" routerLink="/login">Login</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navbar links-->
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active" routerLinkActive="active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"> Semester </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" routerLink="/semester/1">1. Semester <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" routerLink="/semester/2">2. Semester <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" routerLink="/semester/3">3. Semester <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" routerLink="/semester/4">4. Semester <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" routerLink="/semester/5">5. Semester <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" routerLink="/semester/6">6. Semester <span class="sr-only">(current)</span></a>
+          <a class="dropdown-item" routerLink="/semester/7">7. Semester <span class="sr-only">(current)</span></a>
+        </div>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/grades">Leistungen</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/do_modul_again">Nachzuholende Module</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="is_logged_in">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+      </li>
+      <li class="nav-item" *ngIf="!is_logged_in">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -26,9 +26,20 @@ export class ModulAgainComponent implements OnInit {
   }
 
   loadData(activeSemester: number) {
-    this.service.getToDoModules(activeSemester).then(objects => {
-      this.objects = objects;
+    this.service.getModules().then(objects => {
+      this.objects = this.getToDoModules(objects, activeSemester);
     });
+  }
+
+  getToDoModules(objects: Modul[], activeSemester: number) {
+    let filteredObjects: Modul[] = [];
+    objects.forEach(function (obj) {
+      if (obj.note == "0,0" && obj.semester < activeSemester) {
+        filteredObjects.push(obj);
+      }
+    });
+    filteredObjects.sort((a, b) => a.semester - b.semester);
+    return filteredObjects;
   }
 
   onSubmit() {

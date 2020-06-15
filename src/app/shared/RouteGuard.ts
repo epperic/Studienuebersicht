@@ -4,17 +4,17 @@ import { AuthentificationService } from './AuthentificationService';
 
 
 @Injectable()
-export class RouteGuard implements CanActivate{
+export class RouteGuard implements CanActivate {
     constructor(
-        private service:AuthentificationService,
-        private router:Router){ }
+        private service: AuthentificationService,
+        private router: Router) { }
 
     canActivate() {
-        if( this.service.isLoggedIn()){
+        if (this.service.isLoggedIn()) {
             return true;
         } else {
             this.router.navigate(["login"]);
             return false;
-        } 
+        }
     }
 }

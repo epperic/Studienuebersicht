@@ -7,14 +7,14 @@ import { AuthentificationService } from '../shared/AuthentificationService';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
-  is_logged_in:boolean;
+  is_logged_in: boolean;
 
-  constructor(private service:AuthentificationService) {
+  constructor(private service: AuthentificationService) {
     this.is_logged_in = this.service.isLoggedIn();
     this.service.changed.subscribe(() => {
       this.is_logged_in = this.service.isLoggedIn();
     });
-   }
+  }
 
   ngOnInit(): void {
   }

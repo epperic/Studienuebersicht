@@ -10,10 +10,10 @@ import { AuthentificationService } from '../shared/AuthentificationService';
 
 export class LogoutComponent implements OnInit {
 
-  constructor(private service:AuthentificationService, private router: Router) { 
-      this.service.logout();
-      router.navigate(["/login"])
-    }
+  constructor(private service: AuthentificationService, private router: Router) {
+    this.service.logout();
+    router.navigate(["/login"])
+  }
 
   ngOnInit(): void { }
 }
