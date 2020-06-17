@@ -9,7 +9,7 @@ export class ModulService {
 
   constructor(private db: AngularFirestore) { }
 
-  getModules() {
+  async getModules() {
     return new Promise<Modul[]>(resolve => {
       let gesamt_ECTS: number = 0;
       let collection = this.db.collection('modul');
