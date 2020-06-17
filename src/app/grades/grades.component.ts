@@ -11,6 +11,7 @@ export class GradesComponent implements OnInit {
   objects: Modul[] = [];
   selected = null;
   allECTS: number;
+  averageGrade: number;
 
   constructor(private service: ModulService) {
     this.loadData();
@@ -23,13 +24,14 @@ export class GradesComponent implements OnInit {
     this.service.getModules().then(objects => {
       this.objects = this.getGrades(objects);
       this.allECTS = this.service.calcAllECTS(this.objects);
+      this.averageGrade = this.service.calcAverageGrade(this.objects);
     });
   }
 
   getGrades(objects: Modul[]) {
     let filteredObjects: Modul[] = [];
     objects.forEach(function (obj) {
-      if (obj.note != "0,0") {
+      if (obj.note != 0.0) {
         filteredObjects.push(obj);
       }
     });

@@ -12,6 +12,7 @@ export class ModullistComponent implements OnInit {
   selected = null;
   objects: Modul[] = [];
   allECTS: number;
+  averageGrade: number;
 
   constructor(private router: Router,
     private service: ModulService,
@@ -28,6 +29,7 @@ export class ModullistComponent implements OnInit {
     this.service.getModules().then(objects => {
       this.objects = this.getSemester(objects, semester);
       this.allECTS = this.service.calcAllECTS(this.objects);
+      this.averageGrade = this.service.calcAverageGrade(this.objects);
     });
   }
 

@@ -9,7 +9,7 @@ export class ModulService {
 
   constructor(private db: AngularFirestore) { }
 
-  async getModules() {
+  getModules() {
     return new Promise<Modul[]>(resolve => {
       let gesamt_ECTS: number = 0;
       let collection = this.db.collection('modul');
@@ -28,11 +28,23 @@ export class ModulService {
   calcAllECTS(objects: Modul[]) {
     let CollectedECTS = 0;
     objects.forEach(function (modul) {
-      if (modul.note != "0,0") {
+      if (modul.note != 0.0) {
         CollectedECTS += (modul.ects * 1);
       }
     });
     return CollectedECTS;
+  }
+
+  calcAverageGrade(objects: Modul[]) {
+    let sum = 0;
+    let count = 0;
+    objects.forEach(function (modul) {
+      if (modul.note != 0.0) {
+        sum += (modul.note * 1);
+        count++;
+      }
+    });
+    return sum / count;
   }
 
   delete(id: string) {

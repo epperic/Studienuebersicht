@@ -4,7 +4,7 @@ export class Modul {
         public name: string,
         public professor: string,
         public ects: number,
-        public note: string,
+        public note: number,
         public semester: number
     ) { }
 }

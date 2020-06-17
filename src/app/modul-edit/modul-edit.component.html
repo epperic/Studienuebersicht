@@ -14,19 +14,19 @@
         </div>
         <div class="form-group">
             <label for="ects">ECTS:</label>
-            <input type="text" class="form-control" id="ects" formControlName="ects" [ngClass]="{
+            <input type="number" class="form-control" id="ects" formControlName="ects" [ngClass]="{
             'is-invalid': form.controls.ects.invalid && form.controls.ects.dirty,
             'is-valid': form.controls.ects.valid && form.controls.ects.dirty}">
         </div>
         <div class="form-group">
             <label for="note">Note:</label>
-            <input type="text" class="form-control" id="note" formControlName="note" [ngClass]="{
+            <input type="number" class="form-control" id="note" formControlName="note" [ngClass]="{
             'is-invalid': form.controls.note.invalid && form.controls.note.dirty,
             'is-valid': form.controls.note.valid && form.controls.note.dirty}">
         </div>
         <div class="form-group">
             <label for="semester">Semester:</label>
-            <input type="text" class="form-control" id="semester" formControlName="semester" [ngClass]="{
+            <input type="number" class="form-control" id="semester" formControlName="semester" [ngClass]="{
             'is-invalid': form.controls.semester.invalid && form.controls.semester.dirty,
             'is-valid': form.controls.semester.valid && form.controls.semester.dirty}">
         </div>

@@ -24,7 +24,7 @@
             <td scope="col">Modulname</td>
             <td scope="col">Professor</td>
             <td scope="col">ECTS: {{allECTS}}</td>
-            <td scope="col">Note</td>
+            <td scope="col">Note Ø{{averageGrade.toFixed(2)}}</td>
         </thead>
         <tbody>
             <tr *ngFor="let modul of objects; let i = index" (click)="onSelect(i)"
@@ -32,7 +32,7 @@
                 <td scope="row">{{modul.name}}</td>
                 <td scope="row">{{modul.professor}}</td>
                 <td scope="row">{{modul.ects}}</td>
-                <td scope="row">{{modul.note}}</td>
+                <td scope="row">{{modul.note.toFixed(1)}}</td>
             </tr>
         </tbody>
     </table>

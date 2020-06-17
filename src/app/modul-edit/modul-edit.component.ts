@@ -24,12 +24,12 @@ export class ModulEditComponent implements OnInit {
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       professor: new FormControl("", [Validators.required, Validators.minLength(3)]),
       ects: new FormControl("", [Validators.required, Validators.minLength(1), Validators.maxLength(2)]),
-      note: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
+      note: new FormControl("", [Validators.required, Validators.min(0.0), Validators.max(6.0)]),
       semester: new FormControl("", [Validators.required, Validators.min(1), Validators.max(7)])
     });
 
     if (id == 0)
-      this.obj = new Modul("", "", "", 0, "", 0);
+      this.obj = new Modul("", "", "", 0, 0.0, 0);
     else
       this.service.byID(id).then(obj => {
         this.obj = obj;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModulService } from '../shared/ModulService';
 import { Router } from '@angular/router';
 import { Modul } from '../model/Modul';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-modul-again',
@@ -15,6 +15,7 @@ export class ModulAgainComponent implements OnInit {
   objects: Modul[] = [];
   hasSubmitted: boolean = false;
   form: FormGroup;
+  activeSemester: number;
 
   constructor(private router: Router, private service: ModulService) {
     this.form = new FormGroup({
@@ -34,7 +35,7 @@ export class ModulAgainComponent implements OnInit {
   getToDoModules(objects: Modul[], activeSemester: number) {
     let filteredObjects: Modul[] = [];
     objects.forEach(function (obj) {
-      if (obj.note == "0,0" && obj.semester < activeSemester) {
+      if (obj.note == 0 && obj.semester < activeSemester["semester"]) {
         filteredObjects.push(obj);
       }
     });
